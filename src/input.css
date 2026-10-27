@@ -2,6 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+/* Palet "buku catatan": kertas hangat & tinta, dengan satu aksen per kanal */
+:root {
+  --paper: 246 241 231;
+  --surface: 252 249 243;
+  --ink: 28 26 23;
+  --muted: 104 97 86;
+  --line: 221 212 195;
+
+  --run: 194 65 12;
+  --play: 109 40 217;
+  --film: 190 18 60;
+  --code: 29 78 216;
+
+  color-scheme: light;
+}
+
+.dark {
+  --paper: 20 19 16;
+  --surface: 30 28 24;
+  --ink: 237 230 214;
+  --muted: 163 155 139;
+  --line: 54 50 43;
+
+  --run: 251 146 60;
+  --play: 167 139 250;
+  --film: 251 113 133;
+  --code: 96 165 250;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    /* Titik-titik halus seperti kertas buku catatan dot-grid */
+    background-image: radial-gradient(
+      rgb(var(--line) / 0.7) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+
+  ::selection {
+    @apply bg-ink text-paper;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-ink;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.18em] text-muted;
+  }
+
+  .section-title {
+    @apply font-serif text-4xl sm:text-5xl font-medium tracking-tight leading-[1.05];
+    font-variation-settings: "opsz" 96;
+  }
+
+  .card {
+    @apply bg-surface border border-line rounded-sm;
+  }
+
+  .link {
+    @apply underline decoration-line decoration-2 underline-offset-4 transition-colors hover:decoration-ink;
+  }
+
+  .tag {
+    @apply font-mono text-[0.7rem] px-2 py-0.5 border border-line rounded-sm text-muted;
+  }
+}
+
+/* Muncul perlahan saat di-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Penanda <details> bawaan disembunyikan; diganti ikon sendiri */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .details-icon {
+  transform: rotate(45deg);
 }

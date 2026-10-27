@@ -1,25 +1,33 @@
 /** @type {import('tailwindcss').Config} */
+
+// Warna diambil dari CSS variable di src/input.css,
+// sehingga mode terang/gelap cukup diatur di satu tempat.
+const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
+
 module.exports = {
-  content: ["./*.{html,js}"],
+  content: ["./*.html", "./src/**/*.js"],
   darkMode: "class",
   theme: {
     fontFamily: {
-      heading: ["Inter", "sans-serif"],
-      body: ["Source Sans 3", "sans-serif"],
+      serif: ["Fraunces", "Georgia", "serif"],
+      sans: ["Inter", "system-ui", "sans-serif"],
+      mono: ["JetBrains Mono", "ui-monospace", "monospace"],
     },
     extend: {
       colors: {
-        primary: {
-          400: "#60A5FA",
-          500: "#3B82F6",
-          600: "#2563EB",
-          700: "#1D4ED8",
-        },
-        "gray-darker": "#121212",
-        "gray-dark": "#1F1F1F",
-        "gray-light": "#F3F4F6",
-        "gray-heading": "#111827",
-        "gray-text": "#374151",
+        paper: token("paper"),
+        surface: token("surface"),
+        ink: token("ink"),
+        muted: token("muted"),
+        line: token("line"),
+        // Satu warna aksen untuk tiap kanal minat
+        run: token("run"),
+        play: token("play"),
+        film: token("film"),
+        code: token("code"),
+      },
+      maxWidth: {
+        page: "72rem",
       },
     },
   },
