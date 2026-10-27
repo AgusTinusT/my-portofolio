@@ -5,7 +5,7 @@
  * simpan, lalu refresh halaman — tidak perlu menyentuh index.html.
  *
  * Kanal yang tersedia: "lari", "game", "film", "kode" (tampil sebagai "Produk").
- * Di "karya", kolom "untuk" dan "insight" boleh dikosongkan.
+ * Di "karya", kolom "untuk", "insight", dan "kisah" boleh dikosongkan.
  *
  * TANGGAL — selalu "YYYY-MM-DD", semuanya opsional kecuali "updated":
  *   updated         tanggal terakhir isi file ini diubah (tampil di hero)
@@ -17,8 +17,8 @@
  * Setiap kali mengubah isi, perbarui "updated" di bawah dan tanggal di item
  * yang berubah, lalu catat di CHANGELOG.md.
  *
- * Status isi: lari, game, film, catatan, dan tiga item "Sekarang" terakhir
- * masih CONTOH. Karya, tautan, dan item "Sekarang" pertama sudah data asli.
+ * Status isi: SEMUA KANAL (karya, tautan, film, game, lari, catatan, dan blok "Sekarang")
+ * sudah sepenuhnya DATA ASLI dari pemilik.
  */
 window.SITE_CONTENT = {
   updated: "2026-10-27",
@@ -30,25 +30,25 @@ window.SITE_CONTENT = {
       since: "2026-10-27",
       label: "Baru meluncurkan",
       title: "IME Police Multiview",
-      note: "Kodenya dibangun bersama AI. Bagian tersulitnya justru memahami apa yang dibutuhkan dispatcher saat memantau puluhan stream sekaligus.",
+      note: "Kodenya dibangun bersama AI. Menariknya, pemanfaatan GA4 secara tepat membuka wawasan soal fitur apa yang benar-benar rutin diakses dispatcher saat bertugas.",
     },
     {
       kanal: "lari",
-      label: "Sedang berlatih",
-      title: "Menuju half marathon",
-      note: "Membangun jarak tempuh mingguan pelan-pelan. Fokus lari santai di zona 2, bukan kecepatan.",
+      label: "Fase pemulihan",
+      title: "Kembali pelan-pelan",
+      note: "Pasca cedera, lari santai 1–2 kali sebulan sejauh 3–5 km (pace 9–10). Belajar lebih peka mendengarkan sinyal tubuh.",
     },
     {
       kanal: "game",
       label: "Sedang memainkan",
-      title: "Baldur's Gate 3",
-      note: "Playthrough kedua sebagai bard. Kagum betapa banyak cabang cerita yang ditangani dengan rapi.",
+      title: "Crossfire Philippines",
+      note: "Wadah nostalgia dari masa kecil yang kembali saya mainkan untuk mengistirahatkan kepala.",
     },
     {
       kanal: "film",
       label: "Baru ditonton",
-      title: "Dune: Part Two",
-      note: "Skala visualnya luar biasa, tapi yang paling membekas justru sunyinya.",
+      title: "Black Clover (Season 2)",
+      note: "Dinamika rivalitas dan perjuangan tim yang pantang menyerah.",
     },
   ],
 
@@ -105,53 +105,56 @@ window.SITE_CONTENT = {
 
   lari: {
     intro:
-      "Lari adalah cara saya mengosongkan kepala, dan cara mengingat rasanya lelah. Pengguna yang frustrasi dengan aplikasi buruk merasakan hal yang sama.",
+      "Lari mengajarkan saya batas diri dan pentingnya pemulihan. Setelah sempat cedera usai mencapai jarak terjauh dan PR 5K, kini saya berlari santai untuk menjaga kebiasaan tanpa memaksakan diri.",
     stats: [
-      { label: "Bulan ini", value: "64 km" },
-      { label: "Terjauh", value: "16 km" },
-      { label: "PR 10K", value: "54:12" },
-      { label: "Target", value: "HM 2027" },
+      { label: "Terjauh", value: "11,24 km" },
+      { label: "Waktu terjauh", value: "1:39:21" },
+      { label: "PR 5K", value: "35:13" },
+      { label: "Fokus saat ini", value: "Pemulihan" },
     ],
     log: [
-      { date: "2026-10-25", distance: "16 km", pace: "6:18/km", note: "Lari panjang akhir pekan. Kaki berat di km 12, tapi selesai." },
-      { date: "2026-10-22", distance: "6 km", pace: "5:40/km", note: "Tempo pendek sebelum kerja." },
-      { date: "2026-10-19", distance: "10 km", pace: "6:05/km", note: "Rute baru lewat taman kota. Akan diulang." },
-      { date: "2026-10-16", distance: "5 km", pace: "6:30/km", note: "Pemulihan. Santai, sambil dengar podcast." },
+      { date: "2026-10-18", distance: "4 km", pace: "9:25/km", note: "Lari santai pemulihan pasca cedera. Menjaga ritme dan mendengarkan tubuh." },
+      { date: "2026-09-28", distance: "3,5 km", pace: "9:40/km", note: "Jogging ringan bulanan. Tanpa target waktu, murni untuk refreshing." },
+      { date: "2026-03-03", distance: "5 km", pace: "7:02/km", note: "PR 5K tercepat (durasi 35:13, pace 7). Sesi intens sebelum mengalami cedera." },
+      { date: "2026-02-25", distance: "11,24 km", pace: "8:50/km", note: "Rekor jarak terjauh (durasi 1:39:21). Menguji ketahanan fisik dan konsistensi mental." },
     ],
   },
 
   game: {
     intro:
-      "Game adalah UX yang paling jujur: kalau membingungkan, pemain langsung berhenti. Saya bermain sambil memperhatikan kenapa saya betah, atau kenapa menyerah.",
+      "Game bagi saya bukan tentang mengejar tren atau menumpuk koleksi, melainkan ruang bernostalgia dan mengistirahatkan kepala.",
     playing: {
-      title: "Baldur's Gate 3",
-      platform: "PC",
-      hours: "± 140 jam",
-      note: "Setiap keputusan kecil punya konsekuensi. Pelajaran bagus soal merancang state yang rumit.",
+      title: "Crossfire Philippines",
+      platform: "PC (Stove Launcher)",
+      hours: "Nostalgia masa kecil",
+      note: "Game masa kecil yang kembali saya mainkan. Cuma jadi wadah nostalgia untuk mengingat kembali keseruan masa lalu dan bersenang-senang tanpa beban.",
     },
-    favorites: [
-      { title: "The Witcher 3", genre: "RPG", note: "Side quest yang ditulis lebih baik daripada kebanyakan film." },
-      { title: "Civilization VI", genre: "Strategi", note: "“Satu giliran lagi” adalah UX loop paling berbahaya." },
-      { title: "Hollow Knight", genre: "Metroidvania", note: "Dunia yang bercerita tanpa banyak kata." },
-      { title: "Disco Elysium", genre: "RPG", note: "Bukti bahwa antarmuka teks pun bisa sangat hidup." },
-    ],
+    favorites: [],
   },
 
   film: {
     intro:
-      "Film melatih saya membaca perasaan orang tanpa harus diucapkan. Keterampilan yang sama saya pakai untuk membaca pengguna.",
+      "Film dan serial melatih saya membaca perasaan orang tanpa harus diucapkan. Keterampilan yang sama saya pakai untuk membaca pengguna.",
     list: [
-      { title: "Arrival", year: 2016, rating: 5, note: "Film tentang bahasa yang ternyata film tentang waktu." },
-      { title: "Blade Runner 2049", year: 2017, rating: 5, note: "Setiap frame bisa dijadikan wallpaper." },
-      { title: "Interstellar", year: 2014, rating: 5, note: "Masih merinding setiap kali adegan docking." },
-      { title: "Prisoners", year: 2013, rating: 4, note: "Tegang dari awal sampai akhir, tanpa jeda." },
-      { title: "Severance", year: 2022, rating: 4, note: "Satire dunia kerja yang terlalu dekat dengan kenyataan." },
+      { title: "Black Clover (Season 2)", year: 2019, rating: 4, note: "Dinamika rivalitas dan kerja sama tim yang selalu seru diikuti." },
+      { title: "Reacher (Season 4)", year: 2026, rating: 5, note: "Investigasi lugas dan tensi ketegangan yang konsisten." },
+      { title: "Silo (Season 2)", year: 2024, rating: 5, note: "Misteri bawah tanah yang semakin luas dan atmosfer klaustrofobik yang rapat." },
+      { title: "Snowpiercer (Season 2)", year: 2021, rating: 4, note: "Dinamika kelas sosial dan perebutan kendali di atas kereta yang tak pernah berhenti." },
+      { title: "How to Sell Drugs Online (Fast) (Season 3)", year: 2021, rating: 4, note: "Kekacauan yang berawal dari ego dan ambisi bisnis digital anak muda." },
     ],
   },
 
-  // Kanal kode — proyek yang sudah saya buat
+  // Kanal kode — proyek yang sudah saya buat.
+  // Kartu di beranda hanya memakai: image, status, title, untuk, ringkas.
+  // Cerita lengkapnya tampil di halaman karya/?p=<slug>:
+  //   insight  pelajaran utama, tampil sebagai kutipan besar
+  //   kisah[]  bagian cerita: { judul, paragraf: ["...", "..."] }
+  // Ide judul bagian: "Untuk siapa & situasinya", "Di mana mereka tersandung",
+  // "Keputusan yang saya ambil", "Yang berubah setelahnya", "Yang masih ingin
+  // saya perbaiki". "slug" jangan diubah setelah dibagikan (dipakai di URL).
   karya: [
     {
+      slug: "ime-police-multiview",
       title: "IME Police Multiview",
       // Tanggal (YYYY-MM-DD): started = mulai dibangun, updated = commit terakhir,
       // launched = rilis publik, added = masuk ke portofolio ini
@@ -160,69 +163,97 @@ window.SITE_CONTENT = {
       added: "2026-10-27",
       status: "Baru diluncurkan",
       image: "./assets/ime-police-multiview.png",
-      untuk: "divisi kepolisian server GTA V roleplay IME",
-      description:
-        "Pusat komando bodycam: puluhan live stream YouTube petugas dipantau sekaligus dalam grid multiview, lengkap dengan HUD bodycam dan studio klip.",
+      untuk: "divisi kepolisian dan komunitas server GTA V roleplay IME",
+      ringkas:
+        "Menonton puluhan bodycam petugas sekaligus, lalu berpindah cepat ke sudut pandang yang aksinya paling seru.",
       insight:
-        "Saat puluhan stream bersuara bersamaan, dispatcher tidak bisa mendengar apa pun. Karena itu hanya satu audio yang boleh aktif, dan berpindah audio ditandai bunyi radio.",
-      tags: ["Laravel", "Vue 3", "Inertia.js", "Tailwind CSS", "YouTube API"],
+        "Penonton di komunitas sangat gemar memantau beragam sudut pandang (POV) dan berganti cepat ke POV yang aksinya paling menarik dalam satu kejadian; website ini hadir memudahkan hal tersebut. Lewat GA4, saya juga belajar membaca pola interaksi mereka untuk memahami fitur mana yang benar-benar rutin diandalkan.",
+      kisah: [
+        {
+          judul: "Untuk siapa & situasinya",
+          paragraf: [
+            "Proyek ini dibangun untuk divisi kepolisian SASP dan komunitas server GTA V Roleplay IME (MotionLife RP). Dalam setiap skenario pengejaran atau operasi besar, puluhan petugas bertugas di lapangan dan menyiarkan bodycam mereka secara langsung di YouTube.",
+            "Bagi penonton di komunitas, daya tarik terbesar roleplay terletak pada dinamika cerita. Mereka ingin memantau aksi dari beragam sudut pandang (POV) petugas dan berpindah cepat ke siapa yang posisinya sedang paling dekat dengan pusat kejadian.",
+          ],
+        },
+        {
+          judul: "Di mana mereka tersandung",
+          paragraf: [
+            "Sebelumnya, penonton terpaksa membuka belasan tab YouTube sekaligus. Akibatnya, komputer menjadi berat, browser lambat, dan audio dari seluruh stream bertabrakan hingga tidak ada suara yang bisa didengar dengan jelas.",
+            "Selain itu, penonton sering melewatkan momen-momen krusial karena kesulitan mencari tahu petugas mana yang sedang berhadapan langsung dengan target pengejaran.",
+          ],
+        },
+        {
+          judul: "Keputusan yang saya ambil",
+          paragraf: [
+            "Saya merancang pusat komando multiview terpadu berbasis Laravel, Vue 3, Inertia.js, dan YouTube Player API. Seluruh siaran aktif disusun dalam grid responsif yang ringan dan mudah dipantau dalam satu layar tanpa membebani browser.",
+            "Untuk mengatasi kekacauan audio, hanya satu audio stream yang diizinkan aktif dalam satu waktu. Setiap kali berpindah audio ke petugas lain, sistem membunyikan efek radio polisi sesaat—menegaskan perpindahan fokus secara imersif.",
+            "Saya juga mengintegrasikan Google Analytics 4 (GA4) secara terukur. Tujuannya bukan sekadar melihat jumlah kunjungan, melainkan membaca pola perilaku nyata penonton: bagian mana yang paling sering mereka buka dan fitur apa yang rutin diandalkan saat siaran berlangsung.",
+          ],
+        },
+        {
+          judul: "Yang berubah setelahnya",
+          paragraf: [
+            "Penonton komunitas kini bisa menikmati jalannya roleplay layaknya berada di ruang komando profesional. Mereka bisa berpindah sudut pandang seketika tanpa kehilangan momen penting.",
+            "Bagi saya sebagai pembangun, data dari GA4 menjadi panduan berharga untuk iterasi fitur berikutnya—memastikan setiap perbaikan selalu menjawab kebutuhan nyata pengguna di lapangan.",
+          ],
+        },
+      ],
+      tags: ["Laravel", "Vue 3", "Inertia.js", "Tailwind CSS", "YouTube API", "GA4"],
       links: [{ label: "Kunjungi", url: "https://policeduty.sasp-motionliferp.com/" }],
     },
     {
-      title: "Aplikasi Mobile Restoran",
-      added: "2025-09-03",
-      image: "./assets/restaurant-application-presentation-flutter.png",
-      untuk: "orang yang lapar dan ingin cepat memutuskan",
-      description:
-        "Pencari restoran dengan Flutter, menggabungkan Firebase, REST API, dan SQLite untuk mode offline.",
-      tags: ["Flutter", "Firebase", "Provider", "SQLite"],
-      links: [
-        { label: "Dokumentasi", url: "https://drive.google.com/file/d/1L46hNfO0bIF6viJ2LBSBUgKGJCczMd-F/view?usp=sharing" },
-        { label: "Kode", url: "https://github.com/AgusTinusT/restaurant_app_flutter.git" },
-      ],
-    },
-    {
+      slug: "penerjemah-tersumpah",
       title: "Website Jasa Penerjemah Tersumpah",
+      started: "2026-04-16",
+      updated: "2026-10-26",
       added: "2025-07-23",
+      status: "Paling berkesan",
       image: "./assets/indomalay.png",
-      untuk: "klien yang butuh penerjemah tersumpah",
-      description:
-        "Website untuk Rudianto Turnip, M.A., penerjemah tersumpah. Menampilkan layanan dan memudahkan klien menghubungi.",
-      tags: ["Next.js", "React", "Tailwind CSS"],
-      links: [{ label: "Kunjungi", url: "https://indomalay.com/" }],
-    },
-    {
-      title: "Book Store API",
-      added: "2025-07-23",
-      image: "./assets/book-store-spring-boot.png",
-      description:
-        "RESTful API toko buku dengan Spring Boot: manajemen buku, anggota, dan transaksi, diamankan Spring Security.",
-      tags: ["Java 17", "Spring Boot", "Spring Security", "MySQL"],
-      links: [{ label: "Kode", url: "https://github.com/AgusTinusT/book-store.git" }],
-    },
-    {
-      title: "Perpus-Laravel",
-      added: "2025-07-23",
-      image: "./assets/perpustakaan-laravel.png",
-      untuk: "petugas dan anggota perpustakaan",
-      description:
-        "Sistem informasi perpustakaan sederhana: peminjaman, pengembalian, dan pengelolaan koleksi buku.",
-      tags: ["PHP 8", "Laravel", "Vite", "MySQL"],
-      links: [{ label: "Kode", url: "https://github.com/AgusTinusT/perpustakaan-laravel" }],
-    },
-    {
-      title: "Kumpulan Aplikasi Mobile",
-      added: "2025-07-23",
-      image: "",
-      description:
-        "Presentasi berbagai aplikasi mobile yang saya buat dengan Android Kotlin dan Flutter.",
-      tags: ["Kotlin", "Flutter", "MVVM", "Clean Architecture"],
-      links: [
+      untuk: "Rudianto Turnip, M.A. dan klien yang butuh terjemahan resmi",
+      ringkas:
+        "Sistem pesanan dan dokumen untuk penerjemah tersumpah, dari berkas masuk sampai terjemahan resmi diterima klien.",
+      insight:
+        "Terjun langsung sebagai validator dokumen membuka mata saya: sambil belajar bahasa Jerman, saya menemukan pola-pola kesalahan berulang dan memahami bagaimana alur sistem yang tepat bisa memangkas waktu kerja secara signifikan.",
+      kisah: [
         {
-          label: "Lihat presentasi",
-          url: "https://docs.google.com/presentation/d/e/2PACX-1vRaN4N8Ds6jcts7SKbahIG_ex8OYV2OlZOhsc15AVr2YxuyfMLN_ZII0YE_H68Dsw/pub?start=false&loop=false&delayms=3000",
+          judul: "Untuk siapa & situasinya",
+          paragraf: [
+            "Platform ini dibangun untuk Rudianto Turnip, M.A., seorang penerjemah tersumpah resmi bahasa Jerman–Indonesia. Klien datang membawa dokumen krusial—mulai dari akta hukum, berkas beasiswa universitas, dokumen korporasi, hingga persyaratan visa yang menuntut akurasi mutlak dan kerahasiaan tinggi.",
+            "Awalnya website ini dibangun dengan Next.js pada 2025 sebagai profil layanan daring. Namun seiring meningkatnya volume dokumen, kebutuhan bergeser dari sekadar profil publik menjadi sistem manajemen alur kerja yang terstruktur.",
+          ],
+        },
+        {
+          judul: "Peran saya sebagai validator & belajar bahasa Jerman",
+          paragraf: [
+            "Dalam proyek ini, peran saya tidak berhenti pada menulis kode. Saya terlibat langsung bertindak sebagai validator dokumen terjemahan. Dari proses itu, sambil belajar bahasa Jerman, saya mulai mengenali pola-pola kesalahan yang kerap berulang pada istilah hukum dan teknis.",
+            "Pengalaman memeriksa berkas secara langsung memberi wawasan nyata: mempercepat kerja penerjemah bukan soal mengetik lebih cepat, melainkan memotong friksi administratif, mempermudah pelacakan status, dan mencegah kesalahan yang sama terulang.",
+          ],
+        },
+        {
+          judul: "Tantangan teknis: VPS, Railway, dan pentingnya staging",
+          paragraf: [
+            "Ini menjadi proyek yang paling berkesan karena untuk pertama kalinya saya belajar mengelola infrastruktur secara menyeluruh: mengonfigurasi VPS lokal Laragon, deployment ke Railway, pengelolaan domain resmi, dan menyiapkan penyimpanan awan aman di AWS S3.",
+            "Pelajaran paling krusial adalah memahami pentingnya staging environment. Menguji alur pemrosesan pesanan dan notifikasi di lingkungan staging terlebih dahulu memastikan tidak ada dokumen klien atau alur status yang terganggu saat sistem berjalan di production.",
+          ],
+        },
+        {
+          judul: "Keputusan arsitektur & pembaruan sistem",
+          paragraf: [
+            "Saya merombak dan membangun ulang sistem ini menggunakan Laravel 12, Tailwind CSS v4, dan Vite. Untuk mengakomodasi jenis dokumen yang sangat beragam tanpa harus terus mengubah skema database, saya menerapkan arsitektur Entity-Attribute-Value (EAV).",
+            "Saya juga menerapkan komunikasi real-time menggunakan WebSocket (Laravel Reverb & Laravel Echo). Setiap kali status pesanan diperbarui—dari draft, validasi, hingga siap dikirim—tim penerjemah dan klien langsung mengetahuinya secara instan tanpa perlu memuat ulang halaman.",
+          ],
+        },
+        {
+          judul: "Yang berubah setelahnya",
+          paragraf: [
+            "Proses penanganan dokumen kini sepenuhnya terpusat dan transparan. Waktu yang sebelumnya tersita untuk administrasi manual kini dialihkan untuk fokus pada kualitas terjemahan bahasa.",
+            "Bagi saya pribadi, proyek ini membuktikan bahwa pemahaman mendalam tentang alur kerja pengguna di dunia nyata jauh lebih menentukan keberhasilan produk daripada sekadar kecanggihan teknologi yang dipakai.",
+          ],
         },
       ],
+      tags: ["Laravel 12", "Tailwind CSS v4", "Vite", "Reverb WebSocket", "AWS S3", "Railway", "VPS"],
+      links: [{ label: "Kunjungi", url: "https://indomalay.com/" }],
     },
   ],
 
@@ -243,21 +274,22 @@ window.SITE_CONTENT = {
       date: "2026-10-20",
       kanal: "lari",
       title: "Pace yang benar terasa terlalu pelan",
-      excerpt: "Pelajaran dari lari zona 2 yang ternyata berlaku juga untuk proyek software.",
+      excerpt: "Pelajaran dari fase pemulihan cedera yang ternyata berlaku juga untuk produk software.",
       body: [
-        "Saat mulai berlatih untuk half marathon, saran pertama yang saya dengar adalah: larilah lebih pelan. Rasanya salah. Saya merasa tidak sedang berlatih.",
-        "Tapi setelah beberapa minggu, jarak bertambah tanpa cedera. Saya sadar pola yang sama sering saya langgar di pekerjaan: terburu-buru di awal sprint, lalu kehabisan napas sebelum rilis.",
-        "Sekarang saya mencoba menerapkan hal yang sama ke kode. Ritme yang bisa dipertahankan lebih penting daripada kecepatan sesaat.",
+        "Setelah mencapai rekor terjauh 11,24 km dan PR 5K dalam 35 menit, saya mengalami cedera. Tubuh memaksa saya berhenti dan melambatkan ritme menjadi 3–5 km sebulan 1–2 kali dengan pace 9–10.",
+        "Awalnya rasanya seperti kemunduran. Tapi di fase pemulihan ini saya belajar bahwa memaksakan kecepatan sebelum siap hanya berujung masalah—persis seperti memaksakan rilis fitur tanpa fondasi yang matang.",
+        "Sekarang saya menikmati setiap langkah pelan. Menjaga ritme yang bisa bertahan lama jauh lebih berharga daripada rekor sesaat.",
       ],
     },
     {
       date: "2026-10-08",
       kanal: "game",
-      title: "Yang Disco Elysium ajarkan soal antarmuka",
-      excerpt: "Game yang hampir seluruhnya teks, tapi terasa lebih hidup daripada banyak aplikasi penuh animasi.",
+      title: "Kembali ke game masa kecil",
+      excerpt: "Kadang yang kita cari bukan grafis mutakhir, melainkan rasa akrab dan nyaman.",
       body: [
-        "Disco Elysium hampir tidak punya aksi. Isinya dialog, pilihan, dan lemparan dadu. Tapi setiap baris teks terasa disengaja.",
-        "Itu mengingatkan saya bahwa antarmuka yang baik tidak selalu soal efek visual. Kadang yang dibutuhkan hanya hierarki yang jelas dan tulisan yang jujur.",
+        "Di tengah banyaknya game modern dengan mekanisme rumit dan dunia yang terlalu luas, saya justru kembali membuka Crossfire.",
+        "Bagi saya, ini murni wadah nostalgia. Ritmenya sudah melekat sejak dulu, mengingatkan pada masa-masa ketika bermain game adalah tentang rehat dan bersenang-senang tanpa beban kompetitif.",
+        "Pengalaman itu mengingatkan saya pada satu hal penting: tidak semua produk harus rumit untuk bisa berkesan. Kadang keakraban dan kesederhanaan justru yang paling bertahan lama.",
       ],
     },
     {

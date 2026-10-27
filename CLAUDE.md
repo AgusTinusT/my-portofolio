@@ -15,7 +15,7 @@ portofolio jasa, melainkan "buku catatan pribadi" tentang **siapa** dia.
 
 - Kodenya ditulis AI. Agus memposisikan diri sebagai pembangun yang fokus pada
   **empati terhadap pengalaman pengguna**, bukan sebagai programmer.
-- Minat: **lari, game** (RPG/strategi, komunitas GTA V roleplay), **film**
+- Minat: **lari, game** (CrossFire PH di STOVE, komunitas GTA V roleplay), **film**
   (sci-fi/thriller), dan membaca. Setiap minat dikaitkan ke cara memahami orang.
 - Jangan menonjolkan skill coding atau daftar tech stack sebagai identitas.
 - Bahasa situs: Indonesia, santai tapi rapi, sudut pandang orang pertama.
@@ -27,8 +27,9 @@ portofolio jasa, melainkan "buku catatan pribadi" tentang **siapa** dia.
 | --- | --- |
 | `index.html` | Halaman utama. Kerangka statis; isi dirender oleh `src/main.js`. |
 | `links/index.html` | Halaman tautan ala Linktree untuk bio Instagram. Memakai path `../`. |
+| `karya/index.html` | Halaman kisah satu proyek: `karya/?p=<slug>`. Isinya dirender dari `karya[]`. |
 | `src/content.js` | **Satu-satunya sumber konten** (`window.SITE_CONTENT`). Edit isi di sini. |
-| `src/main.js` | Render konten, ikon, tema terang/gelap, menu mobile. Dipakai kedua halaman. |
+| `src/main.js` | Render konten, ikon, tema terang/gelap, menu mobile. Dipakai ketiga halaman. |
 | `src/input.css` | Token warna (CSS variable), komponen (`.card`, `.chip`, `.btn-*`, `.tag`). |
 | `tailwind.config.js` | Memetakan token ke kelas Tailwind (`bg-paper`, `text-accent`, `text-run`, ...). |
 | `dist/output.css` | CSS hasil build. **Di-commit** karena Pages tidak menjalankan build. |
@@ -56,15 +57,30 @@ Semua tanggal berformat **`YYYY-MM-DD`** dan dirender sebagai
 | `karya[].status` | Label di sampul, mis. "Baru diluncurkan". Proyek pertama yang punya `status` jadi "Terbaru" di `/links`. |
 | `lari.log[].date`, `catatan[].date` | Tanggal kejadian / tulisan. |
 
+### Kartu vs kisah karya
+
+Kartu di beranda sengaja ringkas: sampul, `status`, `title`, `untuk`, `ringkas`
+(satu kalimat), tautan "Baca kisahnya" dan "Kunjungi". Pengalaman yang lebih
+dalam ditulis di halaman kisah `karya/?p=<slug>`:
+
+| Kolom | Arti |
+| --- | --- |
+| `karya[].slug` | Dipakai di URL. Jangan diubah setelah dibagikan. |
+| `karya[].ringkas` | Satu kalimat untuk kartu dan pembuka halaman kisah. |
+| `karya[].insight` | Pelajaran utama dari penggunanya, tampil sebagai kutipan besar. |
+| `karya[].kisah[]` | Bagian cerita `{ judul, paragraf: [] }`, tampil berurutan. |
+| `karya[].tags` | Hanya tampil di halaman kisah (samping), tidak di kartu. |
+
+Isi `kisah` harus dari kata-kata pemilik. Jangan mengarang pengalaman;
+boleh mengusulkan judul bagian (lihat komentar di `content.js`).
+
 Tahun yang tampil di kartu proyek diambil dari `launched`, lalu `updated`, lalu `added`.
 Jangan menebak tanggal. Ambil dari git (`git log --format=%ad --date=short`)
 atau tanyakan ke pemilik.
 
 ### Status data (per 2026-10-27)
 
-- **Asli:** `karya`, `links`, item pertama `now` (IME Police Multiview).
-- **Masih contoh:** `lari`, `game`, `film`, `catatan`, dan tiga item `now` lainnya.
-  Jangan perlakukan sebagai fakta tentang pemilik.
+- **Asli:** Seluruh isi website (`karya`, `links`, `film`, `game`, `lari`, blok `now`, dan `catatan`) sudah sepenuhnya merupakan data, pencapaian, dan cerita asli pemilik.
 
 ### Proyek terkini
 
@@ -72,6 +88,11 @@ atau tanyakan ke pemilik.
   Mulai 2026-09-09, commit terakhir 2026-10-14, masuk portofolio 2026-10-27.
   Tanggal rilis publik belum diketahui. Repo `AgusTinusT/ime-police-multiview`
   **privat, jangan ditautkan**. Kode lokal: `C:\Development\Laragon\www\ime-police-multiview`.
+- **Website Jasa Penerjemah Tersumpah (indomalay-laravel)**: https://indomalay.com/
+  Mulai 2026-04-16, commit terakhir 2026-10-26, proyek paling berkesan.
+  Evolusi dari versi 2025 ke Laravel 12 + Reverb (WebSocket) + Tailwind v4 + EAV metadata.
+  Repo `AgusTinusT/indomalay-laravel` **privat, jangan ditautkan**.
+  Kode lokal: `C:\Development\Laragon\www\indomalay-laravel`.
 
 ## Alur kerja
 
@@ -85,11 +106,12 @@ atau tanyakan ke pemilik.
 
 ## Hal yang mudah terlewat
 
-- Tailwind hanya memindai `./*.html`, `./links/*.html`, `./src/**/*.js`.
+- Tailwind hanya memindai `./*.html`, `./links/*.html`, `./karya/*.html`, `./src/**/*.js`.
   Halaman baru di folder lain harus ditambahkan ke `content` di `tailwind.config.js`.
 - Kelas yang dibangun di JS harus ditulis utuh (mis. `"bg-run/10"`), jangan dirangkai,
   supaya terdeteksi Tailwind.
-- `src/main.js` dipakai dua halaman; setiap elemen dicek dulu keberadaannya.
-- Di `/links`, path gambar `./assets/...` diubah menjadi `../assets/...` saat render.
+- `src/main.js` dipakai tiga halaman; setiap elemen dicek dulu keberadaannya.
+- Halaman di subfolder memasang `<body data-base="../">`; `asset()` dan `storyUrl()`
+  di `main.js` memakai nilai itu, jadi path `./assets/...` di `content.js` tetap benar.
 - Teks dari `content.js` selalu lewat `esc()` sebelum masuk ke HTML.
 - Footer `index.html` masih memuat URL Instagram/LinkedIn secara langsung.

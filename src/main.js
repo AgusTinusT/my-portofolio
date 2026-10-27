@@ -111,6 +111,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const timeTag = (iso, short) =>
     iso ? `<time datetime="${esc(iso)}">${formatDate(iso, short)}</time>` : "";
 
+  // Halaman di subfolder (links/, karya/) memasang <body data-base="../">
+  // agar path aset dan tautan antarhalaman tetap benar.
+  const base = document.body.dataset.base || "";
+  const asset = (path) => base + String(path).replace(/^\.\//, "");
+  const storyUrl = (k) => `${base}karya/?p=${encodeURIComponent(k.slug)}`;
+
   function fill(id, html) {
     const el = document.getElementById(id);
     if (el) el.innerHTML = html;
@@ -178,6 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const game = content.game || {};
   if (game.playing) {
     const p = game.playing;
+    const meta = [p.platform, p.hours].filter(Boolean).map(esc).join(" · ");
     fill(
       "game-playing",
       `
@@ -186,27 +193,33 @@ document.addEventListener("DOMContentLoaded", function () {
         <div>
           <p class="text-xs font-semibold uppercase tracking-wider text-play mb-1.5">Sedang dimainkan</p>
           <h3 class="font-display text-2xl sm:text-3xl font-bold mb-1">${esc(p.title)}</h3>
-          <p class="font-mono text-xs text-muted mb-4">${esc(p.platform)} · ${esc(p.hours)}</p>
+          ${meta ? `<p class="font-mono text-xs text-muted mb-4">${meta}</p>` : ""}
           <p class="text-muted leading-relaxed max-w-xl">${esc(p.note)}</p>
         </div>
       </article>`
     );
   }
-  fill(
-    "game-favorites",
-    (game.favorites || [])
-      .map(
-        (g) => `
-        <li class="bg-paper border border-line rounded-xl p-5">
-          <div class="flex items-baseline justify-between gap-4 mb-1">
-            <h4 class="font-display text-lg font-bold">${esc(g.title)}</h4>
-            <span class="tag bg-surface shrink-0">${esc(g.genre)}</span>
-          </div>
-          <p class="text-sm text-muted leading-relaxed">${esc(g.note)}</p>
-        </li>`
-      )
-      .join("")
-  );
+  const favEl = document.getElementById("game-favorites");
+  if (favEl) {
+    const favs = game.favorites || [];
+    if (favs.length === 0) {
+      favEl.classList.add("hidden");
+    } else {
+      favEl.classList.remove("hidden");
+      favEl.innerHTML = favs
+        .map(
+          (g) => `
+          <li class="bg-paper border border-line rounded-xl p-5">
+            <div class="flex items-baseline justify-between gap-4 mb-1">
+              <h4 class="font-display text-lg font-bold">${esc(g.title)}</h4>
+              <span class="tag bg-surface shrink-0">${esc(g.genre)}</span>
+            </div>
+            <p class="text-sm text-muted leading-relaxed">${esc(g.note)}</p>
+          </li>`
+        )
+        .join("");
+    }
+  }
 
   fill(
     "film-list",
@@ -227,59 +240,146 @@ document.addEventListener("DOMContentLoaded", function () {
       .join("")
   );
 
+  // Kartu karya sengaja ringkas; ceritanya ada di halaman karya/?p=<slug>
+  const karya = content.karya || [];
+  const cover = (k, cls) =>
+    k.image
+      ? `<img src="${esc(asset(k.image))}" alt="Tangkapan layar ${esc(k.title)}" loading="lazy" class="${cls} object-cover object-top" />`
+      : `<div class="${cls} grid place-items-center bg-code/10 text-code">${icon("kode", "w-16 h-16")}</div>`;
+  const statusBadge = (k) =>
+    k.status
+      ? `<span class="text-xs font-semibold px-2.5 py-1 bg-accent text-white rounded-full">${esc(k.status)}</span>`
+      : "";
+  const visitLink = (k) => (k.links || [])[0];
+
   fill(
     "karya-list",
-    (content.karya || [])
+    karya
       .map((k) => {
-        const cover = k.image
-          ? `<img src="${esc(k.image)}" alt="Tangkapan layar ${esc(k.title)}" loading="lazy" class="w-full aspect-[16/9] object-cover object-top rounded-lg border border-line" />`
-          : `<div class="w-full aspect-[16/9] rounded-lg border border-line grid place-items-center bg-code/10 text-code">
-               ${icon("kode", "w-16 h-16")}
-             </div>`;
-        const dates = [
-          k.started && `Mulai ${timeTag(k.started, true)}`,
-          k.launched && `Rilis ${timeTag(k.launched)}`,
-          k.updated && `Diperbarui ${timeTag(k.updated)}`,
-        ]
-          .filter(Boolean)
-          .join(" · ");
-        const status = k.status
-          ? `<span class="absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 bg-accent text-white rounded-full">${esc(k.status)}</span>`
-          : "";
-        const links = (k.links || [])
-          .map(
-            (l) =>
-              `<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer" class="link">${esc(l.label)} ↗</a>`
-          )
-          .join("");
+        const visit = visitLink(k);
         return `
-        <article class="bg-paper border border-line rounded-xl p-4 flex flex-col reveal">
-          <div class="relative">${cover}${status}</div>
+        <article class="relative group bg-paper border border-line rounded-xl p-4 flex flex-col hover:border-ink transition-colors reveal">
+          <div class="relative">
+            ${cover(k, "w-full aspect-[16/9] rounded-lg border border-line")}
+            <span class="absolute top-3 left-3">${statusBadge(k)}</span>
+          </div>
           <div class="px-2 pt-5 pb-2 flex flex-col flex-1">
-            <div class="flex items-baseline justify-between gap-4 mb-2">
-              <h3 class="font-display text-xl font-bold leading-tight">${esc(k.title)}</h3>
-              <span class="font-mono text-xs text-muted">${timeTag(k.launched || k.updated || k.added, true)}</span>
+            <p class="font-mono text-xs text-muted mb-2">${timeTag(k.launched || k.updated || k.added, true)}</p>
+            <h3 class="font-display text-2xl font-bold leading-tight mb-2">
+              <a href="${storyUrl(k)}" class="after:absolute after:inset-0 after:rounded-xl">${esc(k.title)}</a>
+            </h3>
+            ${k.untuk ? `<p class="text-xs font-semibold uppercase tracking-wider text-code mb-3">Untuk ${esc(k.untuk)}</p>` : ""}
+            <p class="text-muted leading-relaxed mb-6">${esc(k.ringkas)}</p>
+            <div class="mt-auto flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold font-display">
+              <span class="text-accent">Baca kisahnya <span class="inline-block transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></span>
+              ${visit ? `<a href="${esc(visit.url)}" target="_blank" rel="noopener noreferrer" class="link relative z-10">${esc(visit.label)} ↗</a>` : ""}
             </div>
-            ${dates ? `<p class="font-mono text-xs text-muted mb-3">${dates}</p>` : ""}
-            ${k.untuk ? `<p class="text-xs font-semibold uppercase tracking-wider text-code mb-2">Untuk ${esc(k.untuk)}</p>` : ""}
-            <p class="text-sm text-muted leading-relaxed mb-4">${esc(k.description)}</p>
-            ${
-              k.insight
-                ? `<blockquote class="border-l-2 border-accent pl-4 mb-4 text-sm leading-relaxed">
-                     <span class="block text-xs font-semibold text-accent mb-1">Yang saya pelajari dari penggunanya</span>
-                     ${esc(k.insight)}
-                   </blockquote>`
-                : ""
-            }
-            <ul class="flex flex-wrap gap-1.5 mb-5">
-              ${(k.tags || []).map((t) => `<li class="tag bg-surface border border-line">${esc(t)}</li>`).join("")}
-            </ul>
-            <div class="mt-auto flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold font-display">${links}</div>
           </div>
         </article>`;
       })
       .join("")
   );
+
+  // --- HALAMAN KISAH KARYA (karya/?p=<slug>) ---
+  const kisahEl = document.getElementById("kisah");
+  if (kisahEl) {
+    const slug = new URLSearchParams(location.search).get("p");
+    const index = karya.findIndex((k) => k.slug === slug);
+    const k = karya[index];
+
+    if (!k) {
+      kisahEl.innerHTML = `
+        <div class="max-w-xl mx-auto px-4 py-32 text-center">
+          <h1 class="section-title mb-4">Kisah ini belum ada<span class="text-accent">.</span></h1>
+          <p class="text-muted mb-8">Mungkin tautannya berubah. Semua karya ada di halaman utama.</p>
+          <a href="../#karya" class="btn-primary">Lihat semua karya</a>
+        </div>`;
+    } else {
+      document.title = `${k.title} — Agus Tinus Turnip`;
+      const visit = visitLink(k);
+      const next = karya[(index + 1) % karya.length];
+      const dates = [
+        ["Mulai", k.started],
+        ["Rilis", k.launched],
+        ["Diperbarui", k.updated],
+      ].filter(([, d]) => d);
+
+      kisahEl.innerHTML = `
+        <header class="max-w-page mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-10">
+          <div class="max-w-3xl reveal">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+              ${statusBadge(k)}
+              ${k.untuk ? `<span class="text-xs font-semibold uppercase tracking-wider text-code">Untuk ${esc(k.untuk)}</span>` : ""}
+            </div>
+            <h1 class="font-display font-bold tracking-tight leading-[1.05] text-4xl sm:text-6xl mb-5">${esc(k.title)}<span class="text-accent">.</span></h1>
+            <p class="text-lg sm:text-xl text-muted leading-relaxed mb-8">${esc(k.ringkas)}</p>
+            ${visit ? `<a href="${esc(visit.url)}" target="_blank" rel="noopener noreferrer" class="btn-primary">${esc(visit.label)} situsnya ↗</a>` : ""}
+          </div>
+        </header>
+
+        <figure class="max-w-page mx-auto px-4 sm:px-6 reveal">
+          ${cover(k, "w-full aspect-[16/9] rounded-xl border border-line")}
+        </figure>
+
+        <div class="max-w-page mx-auto px-4 sm:px-6 py-16 sm:py-20 grid md:grid-cols-12 gap-12">
+          <article class="md:col-span-8 max-w-prose">
+            ${
+              k.insight
+                ? `<blockquote class="border-l-4 border-accent pl-6 mb-14 reveal">
+                     <p class="eyebrow text-accent mb-3">Yang saya pelajari dari penggunanya</p>
+                     <p class="font-display text-xl sm:text-2xl font-semibold leading-snug">${esc(k.insight)}</p>
+                   </blockquote>`
+                : ""
+            }
+            ${(k.kisah || [])
+              .map(
+                (bagian) => `
+                <section class="mb-12 reveal">
+                  <h2 class="font-display text-2xl font-bold tracking-tight mb-4">${esc(bagian.judul)}</h2>
+                  <div class="space-y-4 text-lg leading-relaxed text-muted">
+                    ${(bagian.paragraf || []).map((p) => `<p>${esc(p)}</p>`).join("")}
+                  </div>
+                </section>`
+              )
+              .join("")}
+          </article>
+
+          <aside class="md:col-span-4 space-y-8 md:sticky md:top-24 self-start reveal">
+            ${
+              dates.length
+                ? `<dl class="card p-5 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
+                     ${dates.map(([label, d]) => `<dt class="text-muted">${label}</dt><dd class="font-mono text-right">${timeTag(d)}</dd>`).join("")}
+                   </dl>`
+                : ""
+            }
+            ${
+              (k.tags || []).length
+                ? `<div>
+                     <p class="text-sm text-muted mb-3">Dirakit bersama AI, di atas</p>
+                     <ul class="flex flex-wrap gap-1.5">
+                       ${k.tags.map((t) => `<li class="tag bg-surface border border-line">${esc(t)}</li>`).join("")}
+                     </ul>
+                   </div>`
+                : ""
+            }
+          </aside>
+        </div>
+
+        ${
+          next && next !== k
+            ? `<nav class="bg-surface border-t border-line" aria-label="Karya lainnya">
+                 <a href="${storyUrl(next)}" class="max-w-page mx-auto px-4 sm:px-6 py-12 flex items-center justify-between gap-6 group">
+                   <span>
+                     <span class="block text-sm text-muted mb-1">Kisah berikutnya</span>
+                     <span class="block font-display text-2xl sm:text-3xl font-bold tracking-tight group-hover:text-accent transition-colors">${esc(next.title)}</span>
+                   </span>
+                   <span class="text-accent text-3xl transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+                 </a>
+               </nav>`
+            : ""
+        }`;
+    }
+  }
 
   fill(
     "catatan-list",
@@ -357,18 +457,18 @@ document.addEventListener("DOMContentLoaded", function () {
       .join("")
   );
 
-  const featured = (content.karya || []).find((k) => k.status);
+  const featured = karya.find((k) => k.status);
   if (featured) {
-    const link = (featured.links || [])[0];
     fill(
       "links-featured",
       `
-      <a href="${esc(link ? link.url : "./")}"${link ? external(link.url) : ""} class="card overflow-hidden block hover:border-ink transition-colors">
-        ${featured.image ? `<img src="${esc(featured.image.replace("./", "../"))}" alt="Tangkapan layar ${esc(featured.title)}" class="w-full aspect-[16/9] object-cover object-top border-b border-line" />` : ""}
+      <a href="${storyUrl(featured)}" class="card overflow-hidden block hover:border-ink transition-colors group">
+        ${cover(featured, "w-full aspect-[16/9] border-b border-line")}
         <span class="block p-4">
-          <span class="inline-block text-xs font-semibold px-2.5 py-1 bg-accent text-white rounded-full mb-2">${esc(featured.status)}</span>
-          <span class="block font-display font-semibold">${esc(featured.title)} <span aria-hidden="true">↗</span></span>
-          ${featured.untuk ? `<span class="block text-sm text-muted">Untuk ${esc(featured.untuk)}</span>` : ""}
+          <span class="inline-block mb-2">${statusBadge(featured)}</span>
+          <span class="block font-display font-semibold">${esc(featured.title)}</span>
+          <span class="block text-sm text-muted mb-2">${esc(featured.ringkas)}</span>
+          <span class="text-sm font-semibold font-display text-accent">Baca kisahnya <span class="inline-block transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></span>
         </span>
       </a>`
     );

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kisah di balik produk yang dibangun Agus Tinus Turnip: untuk siapa, apa yang mereka rasakan, dan apa yang dipelajari dari penggunanya."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Kisah karya — Agus Tinus Turnip" />
+    <meta
+      property="og:description"
+      content="Merasakan dulu, membangun kemudian. Cerita di balik hal-hal yang saya bangun untuk orang lain."
+    />
+    <meta
+      property="og:image"
+      content="https://agustinust.github.io/my-portofolio/images/social-preview.png"
+    />
+    <meta property="og:site_name" content="Agus Tinus Turnip" />
+    <!-- Judul diganti oleh src/main.js sesuai karya di ?p=<slug> -->
+    <title>Kisah karya — Agus Tinus Turnip</title>
+
+    <!-- Pasang tema lebih awal agar tidak berkedip saat memuat -->
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        if (
+          t === "dark" ||
+          (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../dist/output.css" />
+  </head>
+  <body data-base="../">
+    <header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-line">
+      <nav class="max-w-page mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-6">
+        <a href="../" class="font-display font-extrabold text-[1.75rem] tracking-[-0.04em] leading-none" aria-label="Agus Tinus Turnip, halaman utama">
+          <span aria-hidden="true">agus<span class="text-accent">.</span></span>
+        </a>
+        <div class="flex items-center gap-4">
+          <a href="../#karya" class="text-sm font-medium font-display hover:text-accent transition-colors">
+            <span aria-hidden="true">←</span> Semua karya
+          </a>
+          <button
+            type="button"
+            class="theme-toggle w-9 h-9 grid place-items-center rounded-md border border-line hover:border-ink transition-colors"
+            aria-label="Ganti mode terang/gelap"
+          >
+            <svg class="w-4 h-4 dark:hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
+            <svg class="w-4 h-4 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.95-4.243l-1.59-1.591M3.75 12H6m4.95-7.757l-1.59 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Isi diisi oleh src/main.js dari window.SITE_CONTENT.karya -->
+    <main id="kisah"></main>
+
+    <footer class="bg-[#161616] text-[#f2f0ec]">
+      <div class="max-w-page mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center gap-6 justify-between">
+        <span class="text-sm text-white/60">© <span id="current-year"></span> Agus Tinus Turnip</span>
+        <ul class="flex gap-6 text-sm text-white/80">
+          <li><a href="../" class="hover:text-white">Halaman utama</a></li>
+          <li><a href="../links/" class="hover:text-white">Semua tautan</a></li>
+        </ul>
+        <a href="mailto:agus.tinus.turnip.work@gmail.com" class="btn bg-[#f2f0ec] text-[#161616] hover:bg-white">Ceritakan pengalaman Anda</a>
+      </div>
+    </footer>
+
+    <script src="../src/content.js"></script>
+    <script src="../src/main.js" defer></script>
+  </body>
+</html>

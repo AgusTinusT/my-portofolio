@@ -5,7 +5,7 @@
 const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
 
 module.exports = {
-  content: ["./*.html", "./links/*.html", "./src/**/*.js"],
+  content: ["./*.html", "./links/*.html", "./karya/*.html","./src/**/*.js"],
   darkMode: "class",
   theme: {
     fontFamily: {
