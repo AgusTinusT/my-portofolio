@@ -5,11 +5,11 @@
 const token = (name) => `rgb(var(--${name}) / <alpha-value>)`;
 
 module.exports = {
-  content: ["./*.html", "./src/**/*.js"],
+  content: ["./*.html", "./links/*.html", "./src/**/*.js"],
   darkMode: "class",
   theme: {
     fontFamily: {
-      serif: ["Fraunces", "Georgia", "serif"],
+      display: ["Outfit", "system-ui", "sans-serif"],
       sans: ["Inter", "system-ui", "sans-serif"],
       mono: ["JetBrains Mono", "ui-monospace", "monospace"],
     },
@@ -20,6 +20,7 @@ module.exports = {
         ink: token("ink"),
         muted: token("muted"),
         line: token("line"),
+        accent: token("accent"),
         // Satu warna aksen untuk tiap kanal minat
         run: token("run"),
         play: token("play"),

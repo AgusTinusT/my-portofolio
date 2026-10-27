@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Semua tautan Agus Tinus Turnip: Instagram, IMDb, Goodreads, GitHub, LinkedIn, dan email."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://agustinust.github.io/my-portofolio/links/"
+    />
+    <meta property="og:title" content="Agus Tinus Turnip — Tautan" />
+    <meta
+      property="og:description"
+      content="Merasakan dulu, membangun kemudian. Semua tempat Anda bisa menemukan saya."
+    />
+    <meta
+      property="og:image"
+      content="https://agustinust.github.io/my-portofolio/images/social-preview.png"
+    />
+    <meta property="og:site_name" content="Agus Tinus Turnip" />
+    <title>Agus Tinus Turnip — Tautan</title>
+
+    <!-- Pasang tema lebih awal agar tidak berkedip saat memuat -->
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        if (
+          t === "dark" ||
+          (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dist/output.css" />
+  </head>
+  <body>
+    <main class="max-w-md mx-auto px-4 pt-6 pb-12 min-h-screen flex flex-col">
+      <div class="flex justify-end mb-6">
+        <button
+          type="button"
+          class="theme-toggle w-9 h-9 grid place-items-center rounded-md border border-line hover:border-ink transition-colors"
+          aria-label="Ganti mode terang/gelap"
+        >
+          <svg class="w-4 h-4 dark:hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+          </svg>
+          <svg class="w-4 h-4 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.95-4.243l-1.59-1.591M3.75 12H6m4.95-7.757l-1.59 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Profil -->
+      <header class="text-center mb-8 reveal">
+        <span class="mx-auto mb-5 w-20 h-20 rounded-2xl bg-ink text-paper grid place-items-center font-display font-extrabold text-2xl">AT</span>
+        <h1 class="font-display text-2xl font-bold tracking-tight">Agus Tinus Turnip</h1>
+        <p class="font-display font-semibold text-accent mb-3">Merasakan dulu, membangun kemudian.</p>
+        <p class="text-sm text-muted leading-relaxed">
+          Membangun produk bersama AI, dengan fokus pada orang yang memakainya.
+          Di luar itu: lari, game, film, dan buku.
+        </p>
+        <ul class="flex justify-center gap-2 mt-4" aria-label="Minat">
+          <li class="w-2 h-2 rounded-full bg-run" title="Lari"></li>
+          <li class="w-2 h-2 rounded-full bg-play" title="Game"></li>
+          <li class="w-2 h-2 rounded-full bg-film" title="Film"></li>
+          <li class="w-2 h-2 rounded-full bg-code" title="Produk"></li>
+        </ul>
+      </header>
+
+      <a href="../" class="btn-primary w-full py-3.5 mb-6 reveal">
+        Kenali saya lebih jauh <span aria-hidden="true">→</span>
+      </a>
+
+      <ul id="links-list" class="space-y-3 mb-8"></ul>
+
+      <section class="reveal">
+        <p class="eyebrow text-center mb-3">Terbaru</p>
+        <div id="links-featured"></div>
+      </section>
+
+      <footer class="mt-auto pt-12 text-center text-xs text-muted">
+        © <span id="current-year"></span> Agus Tinus Turnip ·
+        <a href="../" class="link">Halaman utama</a>
+      </footer>
+    </main>
+
+    <script src="../src/content.js"></script>
+    <script src="../src/main.js" defer></script>
+  </body>
+</html>

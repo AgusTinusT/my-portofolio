@@ -2,28 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Palet "buku catatan": kertas hangat & tinta, dengan satu aksen per kanal */
+/* Palet bersih: putih gading & putih, tinta hitam, aksen oranye,
+   ditambah satu warna untuk tiap kanal */
 :root {
-  --paper: 246 241 231;
-  --surface: 252 249 243;
-  --ink: 28 26 23;
-  --muted: 104 97 86;
-  --line: 221 212 195;
+  --paper: 246 244 240;
+  --surface: 255 255 255;
+  --ink: 24 24 24;
+  --muted: 100 98 94;
+  --line: 228 224 217;
+  --accent: 240 90 34;
 
-  --run: 194 65 12;
-  --play: 109 40 217;
-  --film: 190 18 60;
-  --code: 29 78 216;
+  --run: 234 88 12;
+  --play: 124 58 237;
+  --film: 225 29 72;
+  --code: 37 99 235;
 
   color-scheme: light;
 }
 
 .dark {
-  --paper: 20 19 16;
-  --surface: 30 28 24;
-  --ink: 237 230 214;
-  --muted: 163 155 139;
-  --line: 54 50 43;
+  --paper: 17 17 17;
+  --surface: 27 27 27;
+  --ink: 242 240 236;
+  --muted: 163 160 154;
+  --line: 48 47 44;
+  --accent: 251 128 72;
 
   --run: 251 146 60;
   --play: 167 139 250;
@@ -41,44 +44,63 @@
 
   body {
     @apply bg-paper text-ink font-sans antialiased;
-    /* Titik-titik halus seperti kertas buku catatan dot-grid */
-    background-image: radial-gradient(
-      rgb(var(--line) / 0.7) 1px,
-      transparent 1px
-    );
-    background-size: 22px 22px;
   }
 
   ::selection {
-    @apply bg-ink text-paper;
+    @apply bg-accent text-white;
   }
 
   :focus-visible {
-    @apply outline outline-2 outline-offset-2 outline-ink;
+    @apply outline outline-2 outline-offset-2 outline-accent;
   }
 }
 
 @layer components {
   .eyebrow {
-    @apply font-mono text-xs uppercase tracking-[0.18em] text-muted;
+    @apply font-mono text-xs uppercase tracking-[0.16em] text-muted;
   }
 
   .section-title {
-    @apply font-serif text-4xl sm:text-5xl font-medium tracking-tight leading-[1.05];
-    font-variation-settings: "opsz" 96;
+    @apply font-display text-3xl sm:text-4xl font-bold tracking-tight leading-tight;
   }
 
   .card {
-    @apply bg-surface border border-line rounded-sm;
+    @apply bg-surface border border-line rounded-xl;
   }
 
-  .link {
-    @apply underline decoration-line decoration-2 underline-offset-4 transition-colors hover:decoration-ink;
+  .chip {
+    @apply inline-flex items-center gap-2 px-3.5 py-1.5 bg-surface border border-line rounded-full text-sm font-semibold font-display transition-colors hover:border-ink;
   }
 
   .tag {
-    @apply font-mono text-[0.7rem] px-2 py-0.5 border border-line rounded-sm text-muted;
+    @apply text-xs font-medium px-2 py-1 rounded-md bg-paper text-muted;
   }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-md text-sm font-semibold font-display transition;
+  }
+
+  .btn-primary {
+    @apply btn bg-ink text-paper hover:bg-ink/85;
+  }
+
+  .btn-outline {
+    @apply btn border border-ink/80 hover:bg-ink hover:text-paper;
+  }
+
+  .link {
+    @apply underline decoration-line decoration-2 underline-offset-4 transition-colors hover:decoration-accent;
+  }
+}
+
+/* Lencana bundar yang berputar pelan */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 22s linear infinite;
 }
 
 /* Muncul perlahan saat di-scroll */
@@ -103,9 +125,12 @@
     transform: none;
     transition: none;
   }
+  .animate-spin-slow {
+    animation: none;
+  }
 }
 
-/* Penanda <details> bawaan disembunyikan; diganti ikon sendiri */
+/* Penanda <details> bawaan disembunyikan; diganti chevron sendiri */
 details > summary {
   list-style: none;
 }
@@ -113,5 +138,5 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 details[open] .details-icon {
-  transform: rotate(45deg);
+  transform: rotate(180deg);
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Buku catatan pribadi Agus Tinus Turnip: apa yang sedang saya bangun, lari, mainkan, dan tonton."
+      content="Buku catatan pribadi Agus Tinus Turnip: membangun produk bersama AI dengan fokus pada empati pengguna, ditambah lari, game, dan film."
     />
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website" />
@@ -16,7 +16,7 @@
     <meta property="og:title" content="Agus Tinus Turnip — Buku Catatan" />
     <meta
       property="og:description"
-      content="Kode, lari, game, dan film. Catatan tentang hal-hal yang sedang saya minati."
+      content="Merasakan dulu, membangun kemudian. Catatan tentang empati pengguna, lari, game, dan film."
     />
     <meta
       property="og:image"
@@ -43,7 +43,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="dist/output.css" />
@@ -51,30 +51,31 @@
   <body>
     <a
       href="#halo"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-ink focus:text-paper"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-ink focus:text-paper focus:rounded-md"
     >
       Langsung ke isi
     </a>
 
-    <header
-      class="sticky top-0 z-40 bg-paper/85 backdrop-blur border-b border-line"
-    >
-      <nav
-        class="max-w-page mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"
-      >
-        <a href="#halo" class="font-serif text-2xl font-semibold tracking-tight">
-          agus<span class="text-run">.</span>
+    <header class="sticky top-0 z-40 bg-paper/90 backdrop-blur border-b border-line">
+      <nav class="max-w-page mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-6">
+        <a href="#halo" class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-lg bg-ink text-paper grid place-items-center font-display font-extrabold text-sm">AT</span>
+          <span class="font-display font-bold leading-none text-[0.95rem]">
+            Agus Tinus<br /><span class="text-muted font-medium text-xs tracking-[0.2em] uppercase">Turnip</span>
+          </span>
         </a>
 
-        <div class="hidden md:flex items-center gap-8 text-sm">
-          <a href="#sekarang" class="text-muted hover:text-ink transition-colors">Sekarang</a>
-          <a href="#kanal" class="text-muted hover:text-ink transition-colors">Kanal</a>
-          <a href="#karya" class="text-muted hover:text-ink transition-colors">Karya</a>
-          <a href="#catatan" class="text-muted hover:text-ink transition-colors">Catatan</a>
-          <a href="#ngobrol" class="text-muted hover:text-ink transition-colors">Ngobrol</a>
+        <div class="hidden md:flex items-center gap-7 text-sm font-medium font-display">
+          <a href="#sekarang" class="hover:text-accent transition-colors">Sekarang</a>
+          <a href="#kanal" class="hover:text-accent transition-colors">Kanal</a>
+          <a href="#karya" class="hover:text-accent transition-colors">Karya</a>
+          <a href="#catatan" class="hover:text-accent transition-colors">Catatan</a>
+        </div>
+
+        <div class="flex items-center gap-2">
           <button
             type="button"
-            class="theme-toggle w-9 h-9 grid place-items-center border border-line rounded-full hover:border-ink transition-colors"
+            class="theme-toggle w-9 h-9 grid place-items-center rounded-md border border-line hover:border-ink transition-colors"
             aria-label="Ganti mode terang/gelap"
           >
             <svg class="w-4 h-4 dark:hidden" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -84,21 +85,11 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.95-4.243l-1.59-1.591M3.75 12H6m4.95-7.757l-1.59 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
             </svg>
           </button>
-        </div>
-
-        <div class="flex md:hidden items-center gap-2">
-          <button
-            type="button"
-            class="theme-toggle w-9 h-9 grid place-items-center border border-line rounded-full"
-            aria-label="Ganti mode terang/gelap"
-          >
-            <span class="dark:hidden" aria-hidden="true">☾</span>
-            <span class="hidden dark:inline" aria-hidden="true">☀</span>
-          </button>
+          <a href="#ngobrol" class="btn-primary hidden sm:inline-flex">Ngobrol</a>
           <button
             type="button"
             id="menu-button"
-            class="w-9 h-9 grid place-items-center"
+            class="md:hidden w-9 h-9 grid place-items-center"
             aria-controls="mobile-menu"
             aria-expanded="false"
           >
@@ -111,52 +102,102 @@
       </nav>
 
       <div id="mobile-menu" class="hidden md:hidden border-t border-line">
-        <div class="px-4 py-3 flex flex-col font-serif text-2xl">
+        <div class="px-4 py-3 flex flex-col font-display font-semibold text-xl">
           <a href="#sekarang" class="py-2">Sekarang</a>
           <a href="#kanal" class="py-2">Kanal</a>
           <a href="#karya" class="py-2">Karya</a>
           <a href="#catatan" class="py-2">Catatan</a>
-          <a href="#ngobrol" class="py-2">Ngobrol</a>
+          <a href="#ngobrol" class="py-2 text-accent">Ngobrol</a>
         </div>
       </div>
     </header>
 
     <main>
       <!-- HALO -->
-      <section id="halo" class="max-w-page mx-auto px-4 sm:px-6 pt-16 sm:pt-28 pb-20 sm:pb-28">
-        <p class="eyebrow mb-8 reveal">
-          Buku catatan · diperbarui <span data-updated>—</span>
-        </p>
-        <h1
-          class="font-serif font-light tracking-tight leading-[0.95] text-6xl sm:text-8xl lg:text-9xl mb-10 reveal"
-          style="font-variation-settings: 'opsz' 144"
-        >
-          Halo, saya <em class="font-normal">Agus</em><span class="text-run">.</span>
-        </h1>
-        <div class="grid md:grid-cols-12 gap-10 items-end">
-          <p class="md:col-span-7 text-xl sm:text-2xl leading-relaxed text-muted reveal">
-            Saya menulis kode untuk hidup, berlari supaya kepala tetap jernih,
-            bermain game karena penasaran pada sistem, dan menonton film untuk
-            belajar merasakan. <span class="text-ink">Halaman ini adalah catatan tentang semua itu.</span>
-          </p>
-          <div class="md:col-span-5 md:justify-self-end reveal">
-            <p class="eyebrow mb-3">Empat kanal</p>
-            <ul class="flex flex-wrap gap-2">
-              <li><a href="#lari" class="inline-flex items-center gap-2 px-3 py-1.5 border border-line rounded-full text-sm hover:border-run transition-colors"><span class="w-2 h-2 rounded-full bg-run"></span>Lari</a></li>
-              <li><a href="#game" class="inline-flex items-center gap-2 px-3 py-1.5 border border-line rounded-full text-sm hover:border-play transition-colors"><span class="w-2 h-2 rounded-full bg-play"></span>Game</a></li>
-              <li><a href="#film" class="inline-flex items-center gap-2 px-3 py-1.5 border border-line rounded-full text-sm hover:border-film transition-colors"><span class="w-2 h-2 rounded-full bg-film"></span>Film</a></li>
-              <li><a href="#karya" class="inline-flex items-center gap-2 px-3 py-1.5 border border-line rounded-full text-sm hover:border-code transition-colors"><span class="w-2 h-2 rounded-full bg-code"></span>Kode</a></li>
-            </ul>
+      <section id="halo" class="max-w-page mx-auto px-4 sm:px-6 pt-14 sm:pt-20 pb-16">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-7">
+            <p class="eyebrow mb-6 reveal">
+              Buku catatan · diperbarui <span data-updated>—</span>
+            </p>
+            <h1 class="font-display font-bold tracking-tight leading-[1.05] text-5xl sm:text-6xl mb-6 reveal">
+              Halo, saya Agus.<br />
+              <span class="text-accent">Merasakan dulu, membangun kemudian.</span>
+            </h1>
+            <p class="text-lg text-muted leading-relaxed max-w-xl mb-8 reveal">
+              Kodenya kini ditulis AI. Pekerjaan saya adalah memahami orang yang
+              akan memakainya: apa yang membuat mereka bingung, lelah, atau
+              betah. Di luar itu saya berlari, bermain game, dan menonton film,
+              tiga cara saya belajar merasakan. Halaman ini adalah catatan
+              tentang semua itu.
+            </p>
+            <div class="flex flex-wrap gap-3 reveal">
+              <a href="#karya" class="btn-primary">Lihat karya</a>
+              <a href="#catatan" class="btn-outline">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+                Baca catatan
+              </a>
+            </div>
           </div>
+
+          <!-- Ilustrasi: empat kanal sebagai ikon line-art -->
+          <div class="lg:col-span-5 relative reveal">
+            <div class="grid grid-cols-2 gap-4 max-w-sm mx-auto lg:mr-0">
+              <a href="#lari" class="card p-5 aspect-square flex flex-col justify-between hover:-translate-y-1 hover:border-run transition -rotate-2">
+                <span data-icon="lari" class="block w-14 h-14 text-ink"></span>
+                <span class="font-display font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-run"></span>Lari</span>
+              </a>
+              <a href="#game" class="card p-5 aspect-square flex flex-col justify-between hover:-translate-y-1 hover:border-play transition rotate-1 mt-6">
+                <span data-icon="game" class="block w-14 h-14 text-ink"></span>
+                <span class="font-display font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-play"></span>Game</span>
+              </a>
+              <a href="#film" class="card p-5 aspect-square flex flex-col justify-between hover:-translate-y-1 hover:border-film transition rotate-1">
+                <span data-icon="film" class="block w-14 h-14 text-ink"></span>
+                <span class="font-display font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-film"></span>Film</span>
+              </a>
+              <a href="#karya" class="card p-5 aspect-square flex flex-col justify-between hover:-translate-y-1 hover:border-code transition -rotate-1 mt-6">
+                <span data-icon="kode" class="block w-14 h-14 text-ink"></span>
+                <span class="font-display font-semibold flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-code"></span>Produk</span>
+              </a>
+            </div>
+            <!-- Lencana bundar -->
+            <div class="hidden sm:grid absolute -top-12 right-[calc(50%-12rem)] lg:-right-6 w-24 h-24 rounded-full bg-surface border border-line shadow-sm place-items-center" aria-hidden="true">
+              <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full animate-spin-slow">
+                <defs>
+                  <path id="badge-circle" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0" />
+                </defs>
+                <text class="fill-ink font-mono" font-size="9.5" letter-spacing="2.4">
+                  <textPath href="#badge-circle">EMPAT KANAL · SATU ORANG ·</textPath>
+                </text>
+              </svg>
+              <span class="w-8 h-8 rounded-full bg-accent text-white grid place-items-center text-sm font-bold">4</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Baris alat, seperti deretan logo -->
+        <div class="mt-24 reveal">
+          <p class="text-center text-sm text-muted mb-5">Saya rakit bersama AI, di atas teknologi ini</p>
+          <ul class="flex flex-wrap justify-center gap-x-10 gap-y-3 font-display font-bold text-xl text-muted/70">
+            <li>Laravel</li>
+            <li>Vue</li>
+            <li>Flutter</li>
+            <li>Kotlin</li>
+            <li>Tailwind CSS</li>
+            <li>Spring Boot</li>
+            <li>MySQL</li>
+          </ul>
         </div>
       </section>
 
       <!-- SEKARANG -->
-      <section id="sekarang" class="border-t border-line">
+      <section id="sekarang" class="bg-surface border-y border-line">
         <div class="max-w-page mx-auto px-4 sm:px-6 py-20 sm:py-24">
-          <div class="flex flex-wrap items-baseline justify-between gap-4 mb-10 reveal">
-            <h2 class="section-title">Sekarang</h2>
-            <p class="eyebrow">Apa yang sedang terjadi bulan ini</p>
+          <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+            <h2 class="section-title mb-3">Sedang terjadi bulan ini<span class="text-accent">.</span></h2>
+            <p class="text-muted">Yang sedang saya bangun, latih, mainkan, dan tonton.</p>
           </div>
           <div id="now-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
         </div>
@@ -165,123 +206,130 @@
       <!-- KANAL -->
       <div id="kanal">
         <!-- 01 Lari -->
-        <section id="lari" class="border-t border-line">
+        <section id="lari">
           <div class="max-w-page mx-auto px-4 sm:px-6 py-20 sm:py-24 grid md:grid-cols-12 gap-10">
             <header class="md:col-span-4 reveal">
-              <p class="font-mono text-sm text-run mb-3">01 / Lari</p>
-              <h2 class="section-title mb-5">Kilometer demi kilometer</h2>
+              <span class="chip mb-5"><span class="w-2 h-2 rounded-full bg-run"></span>01 · Lari</span>
+              <h2 class="section-title mb-4">Kilometer demi kilometer<span class="text-run">.</span></h2>
               <p class="text-muted leading-relaxed" data-intro="lari"></p>
             </header>
-            <div class="md:col-span-8 space-y-8">
-              <dl id="lari-stats" class="grid grid-cols-2 sm:grid-cols-4 gap-px bg-line border border-line reveal"></dl>
-              <div class="reveal">
-                <p class="eyebrow mb-4">Catatan lari terakhir</p>
-                <ol id="lari-log" class="divide-y divide-line border-y border-line"></ol>
+            <div class="md:col-span-8 space-y-6">
+              <dl id="lari-stats" class="grid grid-cols-2 sm:grid-cols-4 gap-3 reveal"></dl>
+              <div class="card p-6 reveal">
+                <p class="font-display font-semibold mb-2">Catatan lari terakhir</p>
+                <ol id="lari-log" class="divide-y divide-line"></ol>
               </div>
             </div>
           </div>
         </section>
 
         <!-- 02 Game -->
-        <section id="game" class="border-t border-line">
+        <section id="game" class="bg-surface border-y border-line">
           <div class="max-w-page mx-auto px-4 sm:px-6 py-20 sm:py-24 grid md:grid-cols-12 gap-10">
             <header class="md:col-span-4 reveal">
-              <p class="font-mono text-sm text-play mb-3">02 / Game</p>
-              <h2 class="section-title mb-5">Dunia yang bisa dijelajahi</h2>
+              <span class="chip mb-5"><span class="w-2 h-2 rounded-full bg-play"></span>02 · Game</span>
+              <h2 class="section-title mb-4">Dunia yang bisa dijelajahi<span class="text-play">.</span></h2>
               <p class="text-muted leading-relaxed" data-intro="game"></p>
             </header>
-            <div class="md:col-span-8 space-y-8">
+            <div class="md:col-span-8 space-y-6">
               <div id="game-playing" class="reveal"></div>
-              <div class="reveal">
-                <p class="eyebrow mb-4">Favorit sepanjang masa</p>
-                <ul id="game-favorites" class="grid sm:grid-cols-2 gap-4"></ul>
-              </div>
+              <ul id="game-favorites" class="grid sm:grid-cols-2 gap-4 reveal"></ul>
             </div>
           </div>
         </section>
 
         <!-- 03 Film -->
-        <section id="film" class="border-t border-line">
+        <section id="film">
           <div class="max-w-page mx-auto px-4 sm:px-6 py-20 sm:py-24 grid md:grid-cols-12 gap-10">
             <header class="md:col-span-4 reveal">
-              <p class="font-mono text-sm text-film mb-3">03 / Film</p>
-              <h2 class="section-title mb-5">Layar & cerita</h2>
+              <span class="chip mb-5"><span class="w-2 h-2 rounded-full bg-film"></span>03 · Film</span>
+              <h2 class="section-title mb-4">Layar &amp; cerita<span class="text-film">.</span></h2>
               <p class="text-muted leading-relaxed" data-intro="film"></p>
+              <div data-links-kanal="film" class="flex flex-wrap gap-2 mt-5"></div>
             </header>
-            <div class="md:col-span-8 reveal">
-              <p class="eyebrow mb-4">Yang paling membekas</p>
-              <ol id="film-list" class="divide-y divide-line border-y border-line"></ol>
+            <div class="md:col-span-8 card px-6 reveal">
+              <ol id="film-list" class="divide-y divide-line"></ol>
             </div>
           </div>
         </section>
 
         <!-- 04 Kode -->
-        <section id="karya" class="border-t border-line">
+        <section id="karya" class="bg-surface border-y border-line">
           <div class="max-w-page mx-auto px-4 sm:px-6 py-20 sm:py-24">
-            <header class="grid md:grid-cols-12 gap-10 mb-12 reveal">
-              <div class="md:col-span-4">
-                <p class="font-mono text-sm text-code mb-3">04 / Kode</p>
-                <h2 class="section-title">Hal-hal yang saya buat</h2>
+            <header class="flex flex-wrap items-end justify-between gap-6 mb-12 reveal">
+              <div class="max-w-xl">
+                <span class="chip mb-5"><span class="w-2 h-2 rounded-full bg-code"></span>04 · Produk</span>
+                <h2 class="section-title mb-3">Hal-hal yang saya bangun untuk orang lain<span class="text-code">.</span></h2>
+                <p class="text-muted leading-relaxed">
+                  AI menulis kodenya. Saya menghabiskan waktu di sisi lain layar:
+                  bertanya siapa yang akan memakainya, apa yang mereka rasakan,
+                  dan di mana mereka tersandung.
+                </p>
               </div>
-              <p class="md:col-span-8 md:pt-9 text-muted leading-relaxed text-lg max-w-2xl">
-                Kode adalah pekerjaan saya, dan juga tempat semua minat lain
-                bertemu: ketahanan dari lari, cara berpikir sistem dari game,
-                dan rasa terhadap alur cerita dari film.
-              </p>
+              <div data-links-kanal="kode" class="flex flex-wrap gap-2"></div>
             </header>
-            <div id="karya-list" class="grid md:grid-cols-2 gap-6"></div>
+            <div id="karya-list" class="grid md:grid-cols-2 gap-5"></div>
           </div>
         </section>
       </div>
 
       <!-- CATATAN -->
-      <section id="catatan" class="border-t border-line">
+      <section id="catatan">
         <div class="max-w-page mx-auto px-4 sm:px-6 py-20 sm:py-24 grid md:grid-cols-12 gap-10">
-          <header class="md:col-span-4 reveal">
-            <p class="eyebrow mb-3">Tulisan</p>
-            <h2 class="section-title mb-5">Catatan</h2>
-            <p class="text-muted leading-relaxed">
+          <div class="md:col-span-8 reveal">
+            <h2 class="section-title mb-3">Catatan<span class="text-accent">.</span></h2>
+            <p class="text-muted mb-8">
               Tulisan pendek tentang apa pun yang sedang saya pikirkan. Tidak
               rapi, tidak selalu selesai.
             </p>
-          </header>
-          <div id="catatan-list" class="md:col-span-8 space-y-4"></div>
+            <div id="catatan-list" class="border-t border-line"></div>
+          </div>
+          <aside class="md:col-span-4 md:pt-24 reveal">
+            <a href="#ngobrol" class="card p-5 flex items-center justify-between gap-4 hover:border-ink transition-colors group">
+              <span>
+                <span class="block font-display font-semibold">Punya pendapat soal ini?</span>
+                <span class="text-sm text-muted">Balas lewat email, saya baca semuanya.</span>
+              </span>
+              <span class="text-accent text-xl transition-transform group-hover:translate-x-1" aria-hidden="true">›</span>
+            </a>
+            <p class="text-sm text-muted mt-6 mb-3">Yang sedang saya baca</p>
+            <div data-links-kanal="baca" class="flex flex-wrap gap-2"></div>
+          </aside>
         </div>
       </section>
 
       <!-- NGOBROL -->
-      <section id="ngobrol" class="border-t border-line">
-        <div class="max-w-page mx-auto px-4 sm:px-6 py-24 sm:py-32 reveal">
-          <p class="eyebrow mb-6">Ngobrol</p>
-          <h2
-            class="font-serif font-light tracking-tight leading-[1] text-5xl sm:text-7xl max-w-4xl mb-8"
-            style="font-variation-settings: 'opsz' 144"
-          >
-            Mau ngobrol soal film, game, rute lari, atau ide proyek?
+      <section id="ngobrol" class="bg-surface border-t border-line">
+        <div class="max-w-page mx-auto px-4 sm:px-6 py-24 sm:py-28 text-center reveal">
+          <h2 class="font-display font-bold tracking-tight leading-[1.05] text-4xl sm:text-5xl max-w-3xl mx-auto mb-5">
+            Mau ngobrol soal film, game, rute lari,
+            <span class="text-accent">atau ide proyek?</span>
           </h2>
-          <p class="text-lg text-muted max-w-xl mb-10">
+          <p class="text-lg text-muted max-w-xl mx-auto mb-10">
             Kotak masuk saya terbuka. Rekomendasi film yang bagus selalu
             dihargai, begitu juga ajakan kolaborasi.
           </p>
-          <a
-            href="mailto:agus.tinus.turnip.work@gmail.com"
-            class="inline-flex items-center gap-3 font-serif text-2xl sm:text-3xl link break-all"
-          >
-            agus.tinus.turnip.work@gmail.com
-            <span aria-hidden="true">→</span>
-          </a>
-          <ul class="flex flex-wrap gap-x-8 gap-y-3 mt-12 font-mono text-sm">
-            <li><a href="https://www.linkedin.com/in/agus-tinus-turnip" target="_blank" rel="noopener noreferrer" class="link">LinkedIn ↗</a></li>
-            <li><a href="https://github.com/AgusTinusT" target="_blank" rel="noopener noreferrer" class="link">GitHub ↗</a></li>
-          </ul>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="mailto:agus.tinus.turnip.work@gmail.com" class="btn-primary">Kirim email</a>
+            <span id="links-row" class="contents"></span>
+          </div>
+          <a href="links/" class="inline-block mt-8 text-sm link">Semua tautan di satu halaman →</a>
         </div>
       </section>
     </main>
 
-    <footer class="border-t border-line">
-      <div class="max-w-page mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row gap-2 justify-between text-sm text-muted">
-        <p>© <span id="current-year"></span> Agus Tinus Turnip</p>
-        <p class="font-mono text-xs">Ditulis tangan dengan HTML & Tailwind CSS.</p>
+    <footer class="bg-[#161616] text-[#f2f0ec]">
+      <div class="max-w-page mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center gap-6 justify-between">
+        <a href="#halo" class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-lg bg-[#f2f0ec] text-[#161616] grid place-items-center font-display font-extrabold text-sm">AT</span>
+          <span class="text-sm text-white/60">© <span id="current-year"></span> Agus Tinus Turnip</span>
+        </a>
+        <ul class="flex gap-6 text-sm text-white/80">
+          <li><a href="https://www.instagram.com/akugus_/" target="_blank" rel="noopener noreferrer" class="hover:text-white">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/agus-tinus-turnip" target="_blank" rel="noopener noreferrer" class="hover:text-white">LinkedIn</a></li>
+          <li><a href="links/" class="hover:text-white">Semua tautan</a></li>
+        </ul>
+        <a href="mailto:agus.tinus.turnip.work@gmail.com" class="btn bg-[#f2f0ec] text-[#161616] hover:bg-white">Kirim email</a>
       </div>
     </footer>
 
