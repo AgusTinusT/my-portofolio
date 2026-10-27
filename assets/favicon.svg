@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Favicon dari wordmark "agus.": huruf a dan titik oranye -->
+  <rect width="64" height="64" rx="16" fill="#181818"/>
+  <circle cx="25" cy="36" r="10.5" fill="none" stroke="#f2f0ec" stroke-width="7"/>
+  <path d="M35.5 25.5 V46.5" fill="none" stroke="#f2f0ec" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="48" cy="43" r="5" fill="#f05a22"/>
+</svg>

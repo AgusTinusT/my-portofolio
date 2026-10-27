@@ -3,6 +3,13 @@
 Riwayat perubahan website, terbaru di atas. Format tanggal `YYYY-MM-DD`.
 Setiap perubahan isi atau tampilan dicatat di sini (lihat [CLAUDE.md](CLAUDE.md)).
 
+## 2026-10-27 — Logo wordmark "agus."
+
+- Logo baru: wordmark **agus.** (Outfit 800, titik oranye) menggantikan kotak
+  monogram "AT" di header halaman utama dan profil `/links`.
+- Favicon baru `assets/favicon.svg` (huruf a dan titik oranye di kotak gelap),
+  dipasang di kedua halaman.
+
 ## 2026-10-27 — Gaya Pixel Goat, narasi empati, halaman tautan
 
 - Tampilan diganti ke gaya Pixel Goat: heading Outfit, aksen oranye, tombol
